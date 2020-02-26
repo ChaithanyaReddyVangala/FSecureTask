@@ -47,7 +47,6 @@ Launch Chrome
 
 launch youtube home page  
 	[Arguments]	 ${url}
-    Sleep   7
 	Go To	${url}
 
 verify if youtube page is loaded   
