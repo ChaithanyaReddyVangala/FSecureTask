@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on darwin)" generated="20200226 21:13:12.274" rpa="false">
+<suite id="s1" name="Test" source="/Users/thejdeep.p/Desktop/Task/Test.robot">
+<test id="s1-t1" name="Verify Youtube page and return thumbnail and video urls">
+<kw name="Setup Browser" library="Settings" type="setup">
+<arguments>
+<arg>${platform}</arg>
+<arg>${env}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${platform}'=='mac'</arg>
+<arg>Setup Mac</arg>
+</arguments>
+<kw name="Setup Mac" library="Settings">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${remote_url}'=='None'</arg>
+<arg>Launch Chrome</arg>
+<arg>ELSE</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<kw name="Launch Chrome" library="Settings">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20200226 21:13:12.666" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x108a39650&gt;</msg>
+<status status="PASS" starttime="20200226 21:13:12.665" endtime="20200226 21:13:12.666"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>credentials_enable_service=${false}</arg>
+<arg>default_content_settings=2</arg>
+<arg>managed_default_content_settings=2</arg>
+</arguments>
+<assign>
+<var>${prefs}</var>
+</assign>
+<msg timestamp="20200226 21:13:12.667" level="INFO">${prefs} = {'credentials_enable_service': False, 'default_content_settings': '2', 'managed_default_content_settings': '2'}</msg>
+<status status="PASS" starttime="20200226 21:13:12.666" endtime="20200226 21:13:12.668"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:12.668" endtime="20200226 21:13:12.668"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>disable-infobars</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:12.668" endtime="20200226 21:13:12.669"></status>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${options}</arg>
+</arguments>
+<msg timestamp="20200226 21:13:12.669" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200226 21:13:12.669" endtime="20200226 21:13:15.595"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:12.664" endtime="20200226 21:13:15.595"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:12.663" endtime="20200226 21:13:15.596"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${remote_url}'=='None'</arg>
+<arg>Maximize Browser Window</arg>
+<arg>ELSE</arg>
+<arg>Set Window Size</arg>
+<arg>1400</arg>
+<arg>900</arg>
+</arguments>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200226 21:13:15.597" endtime="20200226 21:13:15.730"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:15.596" endtime="20200226 21:13:15.730"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:12.662" endtime="20200226 21:13:15.732"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:12.660" endtime="20200226 21:13:15.732"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${env}</arg>
+</arguments>
+<msg timestamp="20200226 21:13:15.734" level="INFO">${env} = iot</msg>
+<status status="PASS" starttime="20200226 21:13:15.733" endtime="20200226 21:13:15.734"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:12.659" endtime="20200226 21:13:15.735"></status>
+</kw>
+<kw name="launch youtube home page" library="Settings">
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>7</arg>
+</arguments>
+<msg timestamp="20200226 21:13:22.739" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20200226 21:13:15.738" endtime="20200226 21:13:22.741"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200226 21:13:22.742" level="INFO">Opening url 'https://youtube.com/'</msg>
+<status status="PASS" starttime="20200226 21:13:22.741" endtime="20200226 21:13:28.076"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:15.737" endtime="20200226 21:13:28.076"></status>
+</kw>
+<kw name="verify if youtube page is loaded" library="Settings">
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20200226 21:13:28.113" level="INFO">${title} = YouTube</msg>
+<status status="PASS" starttime="20200226 21:13:28.079" endtime="20200226 21:13:28.113"></status>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current page title equals ``title``.</doc>
+<arguments>
+<arg>YouTube</arg>
+</arguments>
+<msg timestamp="20200226 21:13:28.127" level="INFO">Page title is 'YouTube'.</msg>
+<status status="PASS" starttime="20200226 21:13:28.114" endtime="20200226 21:13:28.128"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:28.078" endtime="20200226 21:13:28.128"></status>
+</kw>
+<kw name="input search text" library="Settings">
+<arguments>
+<arg>Selenium</arg>
+</arguments>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${search_textbox}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${search_textbox}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:28.130" endtime="20200226 21:13:28.282"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:28.129" endtime="20200226 21:13:28.282"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${search_textbox}</arg>
+<arg>${searchname}</arg>
+</arguments>
+<msg timestamp="20200226 21:13:28.283" level="INFO">Typing text 'Selenium' into text field 'css:input#search'.</msg>
+<status status="PASS" starttime="20200226 21:13:28.282" endtime="20200226 21:13:29.318"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:28.129" endtime="20200226 21:13:29.319"></status>
+</kw>
+<kw name="click search button" library="Settings">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${search_button}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${search_button}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:29.320" endtime="20200226 21:13:29.387"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:29.320" endtime="20200226 21:13:29.387"></status>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Wait Until Keyword Succeeds</arg>
+<arg>5x</arg>
+<arg>500ms</arg>
+<arg>Click Element</arg>
+<arg>${search_button}</arg>
+</arguments>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>5x</arg>
+<arg>500ms</arg>
+<arg>Click Element</arg>
+<arg>${search_button}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${search_button}</arg>
+</arguments>
+<msg timestamp="20200226 21:13:29.390" level="INFO">Clicking element '//*[@id="search-icon-legacy"]'.</msg>
+<status status="PASS" starttime="20200226 21:13:29.389" endtime="20200226 21:13:30.000"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:29.388" endtime="20200226 21:13:30.000"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:29.388" endtime="20200226 21:13:30.000"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:29.319" endtime="20200226 21:13:30.001"></status>
+</kw>
+<kw name="Retrieve all thumbnail image urls" library="Settings">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${img_srcs}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${img_srcs}</arg>
+<arg>timeout=12</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:30.002" endtime="20200226 21:13:31.017"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:30.002" endtime="20200226 21:13:31.017"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${img_srcs}</arg>
+</arguments>
+<assign>
+<var>${imageSrcList}</var>
+</assign>
+<msg timestamp="20200226 21:13:31.274" level="INFO">${imageSrcList} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="3b0a5b7fcb57d84e30a16f5e53619043", element="3f66721a-169c-42b6-b248-262eec3d392c")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20200226 21:13:31.018" endtime="20200226 21:13:31.274"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Fetching thumbnail img urls</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.275" endtime="20200226 21:13:31.275"></status>
+</kw>
+<kw name="${size} IN [ @{imageSrcList} ]" type="for">
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;3f66721a-169c-42b6-b248-262eec3d392c&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.278" endtime="20200226 21:13:31.417"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.276" endtime="20200226 21:13:31.417"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;f7c36129-0717-401c-aff2-7899c706146f&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.418" endtime="20200226 21:13:31.559"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.417" endtime="20200226 21:13:31.559"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;39900e3a-cac9-45ec-bd99-0cd050c832f6&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.561" endtime="20200226 21:13:31.576"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.560" endtime="20200226 21:13:31.576"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;2fbccdf5-2e22-41e0-90e1-0591e61add66&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.577" endtime="20200226 21:13:31.640"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.577" endtime="20200226 21:13:31.641"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;b07e555c-5d04-4c6a-b56d-3c6156dee364&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.641" endtime="20200226 21:13:31.662"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.641" endtime="20200226 21:13:31.663"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;d7028604-ea34-4feb-b968-c209e3925c87&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.663" endtime="20200226 21:13:31.679"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.663" endtime="20200226 21:13:31.679"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;c5f84b9c-74ce-4ab3-afaa-c38fb1ded88f&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.682" endtime="20200226 21:13:31.708"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.680" endtime="20200226 21:13:31.708"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;3355a0fd-0102-4f72-a1a6-d9bab971abe1&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.709" endtime="20200226 21:13:31.740"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.708" endtime="20200226 21:13:31.740"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;23a420d9-bbdf-493f-b3c3-3b378e2a3514&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.741" endtime="20200226 21:13:31.770"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.740" endtime="20200226 21:13:31.771"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;fa74eab7-0739-45aa-aaa5-46ff98ae9a5a&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.771" endtime="20200226 21:13:31.787"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.771" endtime="20200226 21:13:31.787"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;d3f62fef-40ee-483c-88cd-7bb89e207ff6&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.787" endtime="20200226 21:13:31.815"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.787" endtime="20200226 21:13:31.815"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;4b4db913-a37b-4bc0-8022-ac03ceb43a4c&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.816" endtime="20200226 21:13:31.851"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.815" endtime="20200226 21:13:31.851"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;5f8d4008-a735-4935-a5f4-a44debb0f609&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.851" endtime="20200226 21:13:31.883"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.851" endtime="20200226 21:13:31.884"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;835cce9f-a5e6-4d2e-9239-cc392f87498f&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.885" endtime="20200226 21:13:31.931"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.884" endtime="20200226 21:13:31.931"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;9af4806f-2c2f-4d53-91f9-4b387bc5c177&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('src')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.933" endtime="20200226 21:13:31.942"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.933" endtime="20200226 21:13:31.942"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.276" endtime="20200226 21:13:31.942"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:30.001" endtime="20200226 21:13:31.943"></status>
+</kw>
+<kw name="Retrieve all video link urls" library="Settings">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${video_urls}</arg>
+</arguments>
+<assign>
+<var>${videoUrlList}</var>
+</assign>
+<msg timestamp="20200226 21:13:31.987" level="INFO">${videoUrlList} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="3b0a5b7fcb57d84e30a16f5e53619043", element="493f2355-682b-4f0d-88e2-9a0ec22bc9fa")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20200226 21:13:31.944" endtime="20200226 21:13:31.987"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Fetching video link urls</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.988" endtime="20200226 21:13:31.988"></status>
+</kw>
+<kw name="${size} IN [ @{videoUrlList} ]" type="for">
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;493f2355-682b-4f0d-88e2-9a0ec22bc9fa&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:31.989" endtime="20200226 21:13:32.005"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.989" endtime="20200226 21:13:32.005"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;f14e7d96-8540-4484-a10c-c8bf2f203b78&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.006" endtime="20200226 21:13:32.034"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.005" endtime="20200226 21:13:32.034"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;d2c34610-394f-46cd-9b47-d942670cd7d0&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.035" endtime="20200226 21:13:32.099"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.035" endtime="20200226 21:13:32.100"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;40bb7a2d-e25a-4063-a822-fa59fc3ed9e0&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.101" endtime="20200226 21:13:32.142"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.101" endtime="20200226 21:13:32.143"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;6365d644-36bd-4578-a00c-c5c9e372fbd6&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.143" endtime="20200226 21:13:32.199"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.143" endtime="20200226 21:13:32.199"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;2d337c16-4c51-45fa-8ee5-1ed5ece3b6e4&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.200" endtime="20200226 21:13:32.247"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.199" endtime="20200226 21:13:32.248"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;8bccf168-c305-4b76-8cf2-5875e57e3551&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.248" endtime="20200226 21:13:32.259"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.248" endtime="20200226 21:13:32.259"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;076dfdb1-de59-41c7-8751-bc7d4b0b8bcc&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.260" endtime="20200226 21:13:32.297"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.260" endtime="20200226 21:13:32.297"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;1cb3518e-a859-4d5a-b1ab-7efc09d426d5&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.297" endtime="20200226 21:13:32.325"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.297" endtime="20200226 21:13:32.326"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;d41b668d-b2b5-4b53-8b79-0bb40ad120cb&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.326" endtime="20200226 21:13:32.356"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.326" endtime="20200226 21:13:32.356"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;40ca27ac-0241-436b-8436-a0a90cb58a12&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.356" endtime="20200226 21:13:32.370"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.356" endtime="20200226 21:13:32.370"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;2ac260ef-97e4-4d94-a595-ec9624673c31&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.370" endtime="20200226 21:13:32.381"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.370" endtime="20200226 21:13:32.381"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;c9414452-f3a7-45c8-9655-5b5850a63dd9&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.382" endtime="20200226 21:13:32.394"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.382" endtime="20200226 21:13:32.394"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;6bb74e3b-46cc-43db-8bbe-4b8f9e2203b8&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.395" endtime="20200226 21:13:32.410"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.394" endtime="20200226 21:13:32.410"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;04d6c722-38d0-48ec-9b1f-1bf2967c5c3e&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.411" endtime="20200226 21:13:32.421"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.410" endtime="20200226 21:13:32.421"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;e2bdc632-411a-468f-b474-07d6a3308ab0&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.422" endtime="20200226 21:13:32.431"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.421" endtime="20200226 21:13:32.431"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;0f985a80-9802-4663-8f80-5d8ffbd3144b&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.432" endtime="20200226 21:13:32.467"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.432" endtime="20200226 21:13:32.467"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;96b9bd23-f52c-42db-973c-6dea54e12353&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.467" endtime="20200226 21:13:32.499"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.467" endtime="20200226 21:13:32.499"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;3712e8fa-59bf-4aa3-847b-4f40b747aed9&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.500" endtime="20200226 21:13:32.511"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.499" endtime="20200226 21:13:32.511"></status>
+</kw>
+<kw name="${size} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3b0a5b7fcb57d84e30a16f5e53619043&quot;, element=&quot;00b622cc-3efd-4cf8-bd49-3365a76310c8&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${size.get_attribute('href')}</arg>
+</arguments>
+<status status="PASS" starttime="20200226 21:13:32.512" endtime="20200226 21:13:32.527"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:32.511" endtime="20200226 21:13:32.527"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.988" endtime="20200226 21:13:32.527"></status>
+</kw>
+<status status="PASS" starttime="20200226 21:13:31.943" endtime="20200226 21:13:32.527"></status>
+</kw>
+<doc>Verify Youtube page and return thumbnail and video urls</doc>
+<status status="PASS" starttime="20200226 21:13:12.658" endtime="20200226 21:13:32.528" critical="yes"></status>
+</test>
+<doc>A resource file with reusable keywords and variables.</doc>
+<status status="PASS" starttime="20200226 21:13:12.277" endtime="20200226 21:13:32.531"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Test">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
